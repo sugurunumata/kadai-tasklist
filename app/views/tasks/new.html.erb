@@ -2,29 +2,33 @@
 
 <%= form_for(@task) do |t| %>
 
-<% if @task.errors.any? %>
-  <div id="error_explanation">
+  <% if @task.errors.any? %>
+    <div class="alert alert-warnig">
     
-    <ul>
-      <% @task.errors.full_messages.each do |task| %>
-        <li> <%= task %> </li>
-      <% end %>
-    </ul>
+      <ul>
+        <% @task.errors.full_messages.each do |task| %>
+          <li> <%= task %> </li>
+        <% end %>
+      </ul>
     
-  </div>
+    </div>
   
+  <% end %>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-8-offset-2 col-sm-8 col-md-8-offset-2 col-md-8 col-lg-6-offset-3 col-lg-6" >
+      <div class="form-group">
+        <%= t.label :status, 'ステータス' %>
+        <%= t.text_field :status, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= t.label :content, 'タスク' %>
+        <%= t.text_field :content, class: 'form-control' %>
+      </div>
+
+      <%= t.submit '登録', class: 'btn btn-primary' %>
+    </div>
+  </div>
 <% end %>
-
-<%= t.label :status, 'ステータス' %>
-
-<%= t.text_field :status %>
-
-  <%= t.label :content, 'タスク' %>
-
-  <%= t.text_field :content %>
-
-  <%= t.submit '登録' %>
-
-<% end %>
-
-<%= link_to '一覧に戻る', tasks_path %>
+  
