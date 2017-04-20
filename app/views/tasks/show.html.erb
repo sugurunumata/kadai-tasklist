@@ -4,15 +4,15 @@
 <table class="table table-bordered">
   <tr>
     <th> id </th>
-    <td> <%= @task.id %> </td>
+    <td> <%= ERB::Util.html_escape(@task.id) %> </td>
   </tr>
   <tr>
     <th> ステータス </th>
-    <td> <%= @task.status %> </td>
+    <td> <%= ERB::Util.html_escape(@task.status) %> </td>
   </tr>
   <tr>
     <th> タスク </th>
-    <td> <%= @task.content %> </td>
+    <td> <%= ERB::Util.html_escape(@task.content) %> </td>
   </tr>
 </table>
 

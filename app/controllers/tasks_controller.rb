@@ -2,15 +2,15 @@ class TasksController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:edit, :destroy, :update,]
   
-#  def index
-#    @tasks = Task.all.page(params[:page]).per(3)
-#  end
+  def index
+    @tasks = Task.all.page(params[:page]).per(3)
+  end
   def show
 #    @task = Task.find(params[:id])
   end
-#  def new
-#    @task = Task.new
-#  end
+  def new
+    @task = Task.new
+  end
   def create
 #    @task = Task.new(task_params)
     @task = current_user.tasks.build(task_params)
@@ -22,6 +22,7 @@ class TasksController < ApplicationController
       @tasks = current_user.tasks.order('created_at DESC').page(params[:page])
       flash.now[:danger] = 'taskが登録できません'
       #render :new
+      #render 'tasks/new'
       render 'toppages/index'
     end
   end
@@ -37,6 +38,7 @@ class TasksController < ApplicationController
       redirect_to root_url
     else
       flash.now[:danger] = 'taskは更新されませんでした'
+      #render : 'toppages/index'
       render :edit
     end
   end

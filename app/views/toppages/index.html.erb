@@ -4,6 +4,18 @@
     <aside class="col-md-4">
       
       <%= form_for(@task) do |t| %>
+      
+        <% if @task.errors.any? %>
+          <div class="alert alert-warning">
+    
+            <ul>
+              <% @task.errors.full_messages.each do |message| %>
+                <li> <%= message %> </li>
+              <% end %>
+            </ul>
+    
+          </div>
+      <% end %>
         <li> タスクを入力してください</li>
         <div class="form-group">
           <%= t.text_area :content, class: 'form-control', rows: 5 %>
